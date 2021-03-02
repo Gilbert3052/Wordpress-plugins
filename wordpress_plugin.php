@@ -1,20 +1,20 @@
 <?php
 /*
-Plugin Name: New Page
+Plugin Name: Wordpress Plugin
 Plugin URI: 
-Description: Este es un plugin de pruebas para crear paginas
+Description: Este es un plugin de pruebas 
 Version: 0.01
 */ 
-function Activars(){
+function Activar(){
 
 }
 
-function Desactivars(){
+function Desactivar(){
     flush_rewrite_rules();
 }
 
-register_activation_hook(__FILE__, 'Activars');
-register_deactivation_hook(__FILE__, 'Desactivars');
+register_activation_hook(__FILE__, 'Activar');
+register_deactivation_hook(__FILE__, 'Desactivar');
 
 
 // Creación de Página o Post

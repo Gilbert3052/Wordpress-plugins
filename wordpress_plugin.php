@@ -88,7 +88,9 @@ add_action( 'widgets_init', 'remove_search' );
 
 // Cambiar el color de algun sitio en el Dashboard
 
-add_action ('admin_footer', function (){
+add_action ('admin_footer', 'add_color');
+
+function add_color(){
 
     // Cambio de color del menu en el dashboard 
     echo '<style>
@@ -101,7 +103,7 @@ add_action ('admin_footer', function (){
 
 		</style>';
 
-    });
+}
 
 
     

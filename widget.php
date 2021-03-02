@@ -5,16 +5,16 @@ Plugin URI:
 Description: Este es un plugin de pruebas para crear Widgets
 Version: 0.01
 */ 
-function Activaremos(){
+function Activar(){
 
 }
 
-function Desactivaremos(){
+function Desactivar(){
 
 }
 
-register_activation_hook(__FILE__, 'Activaremos');
-register_deactivation_hook(__FILE__, 'Desactivaremos');
+register_activation_hook(__FILE__, 'Activar');
+register_deactivation_hook(__FILE__, 'Desactivar');
 
 
 function creacion_widget() {

@@ -28,17 +28,20 @@ register_deactivation_hook(__FILE__, 'Desactivar');
 
 add_action( 'admin_init', 'remove_items' );
 function remove_items() {
-
+   
+    // En caso de ser un editor
     if ( current_user_can( 'editor' ) ) {
         remove_menu_page('edit-comments.php'); // Ocultando comentarios
         remove_menu_page('edit.php'); // Ocultando las entradas/post
     }
 
+     // En caso de ser un autor
     if ( current_user_can( 'author' ) ) {
         remove_menu_page('tools.php'); // Ocultando herramientas 
         remove_menu_page('upload.php'); // Ocultando medios
     }
 
+     // En caso de ser un suscriptor
     if ( current_user_can( 'subscriber' ) ) {
         remove_menu_page('index.php'); // Ocultando escritorio del suscriptor
     }

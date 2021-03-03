@@ -19,6 +19,13 @@ register_deactivation_hook(__FILE__, 'Desactivar');
 
 // Creación de Página o Post
 
+    /*
+        En este hook se crea una pagina o post mediante la función "wp_insert_post", la cual toma algunos parámetros
+        como lo son el titulo, el contenido, el estado (si sera publicado o estará en borrador), el tipo ( si sera una
+        pagina o post) y un usuario, para tomar el autor principal de la publicacion se obtiene el id del usuario que 
+        está editando en ese momento mediante la function "get_current_user_id".
+    */
+
 function crearPagina( $user_id ) {
 
 	$user_id = get_current_user_id();
@@ -41,6 +48,12 @@ add_action( 'admin_init', 'crearPagina' );
 
 // Crear nuevo Usuario
 
+    /*
+        En este hook se crea un nuevo usuario mediante la función "add_user", validando primero si el nombre de usuario y 
+        el email no existen para posteriormente obtener los datos ( nombre / correo / contraseña ) y crear el usuario,
+        también existe una validación para asignar el role de administrador a cada usuario creado sin errores.
+    */
+
 add_action('init', 'add_user');
 function add_user() {
     $username = 'Gilberts';
@@ -61,6 +74,11 @@ function add_user() {
 
 // Ocultar Widgets
 
+    /*
+        En este hook se ocultan los widgets del core de WordPress y creados por otros plugins mediante la función
+        "remove_meta_box" con los parámetros del id, la pantalla en la que se encuentra y su contexto.
+    */
+
 add_action('wp_dashboard_setup', 'remove_widgets');
 
 function remove_widgets(){
@@ -79,6 +97,11 @@ function remove_widgets(){
 
 // Ocultar Widget de alguna Página
 
+    /*
+        En este hook se quita el registro de algún widget mediante la función "unregister_widget" en el caso de querer 
+        eliminar los valores por defecto.
+    */
+
 function remove_search() {
     unregister_widget( 'WP_Widget_Search' ); // Ocultando widget de busqueda
 }
@@ -87,6 +110,11 @@ add_action( 'widgets_init', 'remove_search' );
 
 
 // Cambiar el color de algun sitio en el Dashboard
+
+    /*
+        Se realiza el cambio del color de algún sitio en el dashboard, en éste caso se cambia el color del menú y sus items,
+        al utilizar un style y colocar su color de fondo con un tono de gris. 
+    */
 
 add_action ('admin_footer', 'add_color');
 
@@ -108,6 +136,11 @@ function add_color(){
 
     
 // Creación de Widgets
+
+    /*
+        En este hook se realiza la creación de un widget en el dashboard mediante la función "wp_add_dashboard_widget", la
+        cual realiza un llamado a una función, en este caso "creacion_widget" encargada de tener el contenido del widget.
+    */
 
 function creacion_widget() {
     echo "Primer Widget Creado";
